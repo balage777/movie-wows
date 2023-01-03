@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Wows in movies</title>
+
+    <style>
+        body {
+            background-color: bisque;
+        }
+    </style>
+
+</head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="wow_app" class="p-3">
+        <div class="card w-50">
+            <div class="row no-gutters">
+                <div class="col-auto">
+                    <img v-bind:src="randomMovie.poster" class="img-fluid" width="400" alt="">
+                </div>
+                <div class="col p-3">
+                    <div class="card-block px-2">
+                        <h4 class="card-title">{{randomMovie.movie}} ({{randomMovie.year}})</h4>
+                        <p class="card-text">Director: {{randomMovie.director}}</p>
+                        <p class="card-text">Timestamp: {{randomMovie.timestamp}}</p>
+                        <p class="card-text">Character: {{randomMovie.character}}</p>
+                        <p class="card-text">Full line: {{randomMovie.full_line}}</p>
+                        <p class="card-text">Current wow in movie: {{randomMovie.current_wow_in_movie}}</p>
+                        <p class="card-text">Total numbers of wows: {{randomMovie.total_wows_in_movie}}</p>
+                        <video width="320" height="240" controls v-bind:src="randomMovie.video['360p']" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer w-100 text-muted text-right p-2">
+                <button @click="getRandomMovie()" class="btn btn-success m-2">New random movie</a>
+                <button class="btn btn-primary m-2">Save to favourites</a>
+            </div>
+      </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="wow.js"></script>
+  </body>
+</html>
+
