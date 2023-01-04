@@ -9,16 +9,16 @@ createApp({
     }
   },
   methods: {
-    getRandomMovie: async function() {
+    async getRandomMovie() {
         const result = await fetch(this.apiUrl);
         const data = await result.json();
         this.randomMovie = data[0];
     },
-    addFavourite: function() {
+    addFavourite() {
       this.favourites.push(this.randomMovie);
       this.saveToLocalStorage();
     },
-    loadFavourite: function(movie) {
+    loadFavourite(movie) {
       this.randomMovie = movie;
     },
     saveToLocalStorage() {
