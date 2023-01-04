@@ -10,6 +10,16 @@
         body {
             background-color: bisque;
         }
+        .favs {
+            background-color: black;
+            padding: 5px;
+            margin-top: 15px;
+        }
+        .fav {
+            padding: 5px;
+            margin: 5px;
+            cursor: pointer;
+        }
     </style>
 
 </head>
@@ -17,21 +27,22 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <div id="wow_app" class="p-3">
+
         <div class="card w-50">
             <div class="row no-gutters">
                 <div class="col-auto">
-                    <img v-bind:src="randomMovie.poster" class="img-fluid" width="400" alt="">
+                    <img v-bind:src="randomMovie?.poster" class="img-fluid" width="400" alt="">
                 </div>
                 <div class="col p-3">
                     <div class="card-block px-2">
-                        <h4 class="card-title">{{randomMovie.movie}} ({{randomMovie.year}})</h4>
-                        <p class="card-text">Director: {{randomMovie.director}}</p>
-                        <p class="card-text">Timestamp: {{randomMovie.timestamp}}</p>
-                        <p class="card-text">Character: {{randomMovie.character}}</p>
-                        <p class="card-text">Full line: {{randomMovie.full_line}}</p>
-                        <p class="card-text">Current wow in movie: {{randomMovie.current_wow_in_movie}}</p>
-                        <p class="card-text">Total numbers of wows: {{randomMovie.total_wows_in_movie}}</p>
-                        <video width="320" height="240" controls v-bind:src="randomMovie.video['360p']" type="video/mp4">
+                        <h4 class="card-title">{{randomMovie?.movie}} ({{randomMovie?.year}})</h4>
+                        <p class="card-text">Director: {{randomMovie?.director}}</p>
+                        <p class="card-text">Timestamp: {{randomMovie?.timestamp}}</p>
+                        <p class="card-text">Character: {{randomMovie?.character}}</p>
+                        <p class="card-text">Full line: {{randomMovie?.full_line}}</p>
+                        <p class="card-text">Current wow in movie: {{randomMovie?.current_wow_in_movie}}</p>
+                        <p class="card-text">Total numbers of wows: {{randomMovie?.total_wows_in_movie}}</p>
+                        <video width="320" height="240" controls v-bind:src="randomMovie?.video['360p']" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -39,9 +50,17 @@
             </div>
             <div class="card-footer w-100 text-muted text-right p-2">
                 <button @click="getRandomMovie()" class="btn btn-success m-2">New random movie</a>
-                <button class="btn btn-primary m-2">Save to favourites</a>
+                <button @click="addFavourite()" class="btn btn-primary m-2">Save to favourites</a>
             </div>
-      </div>
+        </div>
+        
+        <div class="row favs">
+            <div class="card fav" v-for="movie in favourites" @click="loadFavourite(movie)">
+                <div class="row no-gutters">
+                    <img v-bind:src="movie?.poster" class="img-fluid" width="100">
+                </div>
+            </div>
+        </div>
 
     </div>
 
